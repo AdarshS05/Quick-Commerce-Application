@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:background="@color/zepto_white"
+    android:layout_height="match_parent">
+
+    <include
+        android:id="@+id/topHeader"
+        layout="@layout/layout_top_header"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true" />
+
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:id="@+id/bottomNavigation"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:background="@color/zepto_purple"
+        app:itemTextColor="@color/zepto_white"
+        app:elevation="8dp"
+        app:menu="@menu/bottom_nav_menu"/>
+
+    <LinearLayout
+
+        android:layout_below="@id/topHeader"
+        android:layout_above="@id/bottomNavigation"
+        android:layout_width="match_parent" android:layout_height="match_parent"
+        android:orientation="vertical" android:padding="16dp">
+
+        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:textColor="@color/zepto_bleached_cedar"
+            android:text="Order status" android:textSize="18sp" android:textStyle="bold"/>
+        <TextView android:id="@+id/tvOrderStatus" android:layout_width="wrap_content"
+            android:layout_height="wrap_content" android:text="Order Placed" android:textSize="22sp" android:textColor="@color/zepto_sea_green"
+            android:textStyle="bold"/>
+
+        <Button
+            android:id="@+id/btnFeedback"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:backgroundTint="@color/zepto_purple"
+            android:text="Rate this order" />
+    </LinearLayout>
+</RelativeLayout>

@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent" android:layout_height="wrap_content"
+    android:orientation="horizontal" android:padding="10dp">
+    <LinearLayout android:layout_width="0dp" android:layout_height="wrap_content"
+        android:layout_weight="1" android:orientation="vertical" >
+        <TextView android:id="@+id/tvCartName" android:layout_width="wrap_content"
+            android:layout_height="wrap_content" android:textSize="16sp"
+            android:textColor="@color/zepto_bleached_cedar"/>
+        <TextView android:id="@+id/tvCartPrice" android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/zepto_bleached_cedar"/>
+    </LinearLayout>
+    <TextView android:id="@+id/btnCartMinus" android:layout_width="36dp"
+        android:textColor="@color/zepto_bleached_cedar"
+        android:layout_height="wrap_content" android:text="-" android:textSize="22sp"
+        android:gravity="center"/>
+    <TextView android:id="@+id/tvCartQuantity" android:layout_width="36dp"
+        android:textColor="@color/zepto_bleached_cedar"
+        android:layout_height="wrap_content" android:gravity="center"/>
+    <TextView android:id="@+id/btnCartPlus" android:layout_width="36dp"
+        android:layout_height="wrap_content" android:text="+" android:textSize="22sp"
+        android:textColor="@color/zepto_bleached_cedar"
+        android:gravity="center"/>
+    <TextView android:id="@+id/btnCartRemove" android:layout_width="wrap_content"
+        android:textColor="@color/zepto_bleached_cedar"
+        android:layout_height="wrap_content" android:text="Remove" android:padding="8dp"/>
+</LinearLayout>

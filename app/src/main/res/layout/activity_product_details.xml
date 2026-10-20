@@ -1,0 +1,170 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:background="@color/zepto_white"
+
+    android:layout_height="match_parent">
+
+    <include
+        android:id="@+id/topHeader"
+        layout="@layout/layout_top_header"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true" />
+
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:id="@+id/bottomNavigation"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:background="@color/zepto_purple"
+        app:itemTextColor="@color/zepto_white"
+        app:elevation="8dp"
+        app:menu="@menu/bottom_nav_menu"/>
+
+    <ScrollView xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/zepto_white"
+        android:layout_below="@id/topHeader"
+        android:layout_above="@id/bottomNavigation"
+        android:fillViewport="true">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="20dp">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="16dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentStart="true"
+                    android:layout_centerVertical="true"
+                    android:text="ProductDetails"
+                    android:textSize="20sp"
+                    android:textStyle="bold"
+                    android:textColor="@color/zepto_purple" />
+
+                <ImageButton
+                    android:id="@+id/btnShare"
+                    android:layout_width="48dp"
+                    android:layout_height="48dp"
+                    android:layout_alignParentEnd="true"
+                    android:background="?attr/selectableItemBackgroundBorderless"
+                    android:contentDescription="Share Product"
+                    android:src="@android:drawable/ic_menu_share" />
+
+            </RelativeLayout>
+            <ImageView
+                android:id="@+id/ivDetailImage"
+                android:layout_width="match_parent"
+                android:layout_height="220dp"
+                android:scaleType="fitCenter"
+                android:contentDescription="Product Image"
+                android:src="@drawable/ic_launcher_background"
+                android:layout_marginBottom="16dp" />
+
+            <TextView
+                android:id="@+id/tvDetailTitle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Product Title"
+                android:textSize="22sp"
+                android:textStyle="bold"
+                android:textColor="@color/zepto_bleached_cedar"
+                android:layout_marginBottom="8dp"/>
+
+            <TextView
+                android:id="@+id/tvDetailPrice"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="₹0.0"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                android:textColor="@color/zepto_sea_green"
+                android:layout_marginBottom="16dp"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Description"
+                android:textSize="14sp"
+                android:textStyle="bold"
+                android:textColor="@color/zepto_bleached_cedar"
+                android:layout_marginBottom="4dp"/>
+
+            <TextView
+                android:id="@+id/tvDetailDescription"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Product full description will be shown here..."
+                android:textSize="14sp"
+                android:textColor="@color/zepto_shuttle_gray"
+                android:lineSpacingExtra="4dp"
+                android:layout_marginBottom="24dp"/>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center_vertical"
+                android:layout_marginBottom="24dp">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="Quantity:"
+                    android:textSize="16sp"
+                    android:textStyle="bold"
+                    android:textColor="@color/zepto_bleached_cedar" />
+
+                <Button
+                    android:id="@+id/btnMinus"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:text="-"
+                    android:textSize="18sp"
+                    android:backgroundTint="@color/zepto_sea_green"
+                    android:padding="0dp" />
+
+                <TextView
+                    android:id="@+id/tvQuantity"
+                    android:layout_width="40dp"
+                    android:layout_height="wrap_content"
+                    android:text="1"
+                    android:textSize="18sp"
+                    android:textStyle="bold"
+                    android:gravity="center" />
+
+                <Button
+                    android:id="@+id/btnPlus"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:text="+"
+                    android:textSize="18sp"
+                    android:backgroundTint="@color/zepto_sea_green"
+                    android:padding="0dp" />
+
+            </LinearLayout>
+
+            <Button
+                android:id="@+id/btnAddToCart"
+                android:layout_width="match_parent"
+                android:layout_height="56dp"
+                android:text="ADD TO CART"
+                android:textColor="@color/zepto_white"
+                android:backgroundTint="@color/zepto_bleached_cedar"
+                android:textStyle="bold"/>
+        </LinearLayout>
+    </ScrollView>
+</RelativeLayout>

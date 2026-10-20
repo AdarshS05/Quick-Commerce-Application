@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@color/zepto_white">
+
+    <include
+        android:id="@+id/topHeader"
+        layout="@layout/layout_top_header"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rvProducts"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/topHeader"
+        android:layout_above="@id/bottomNavigation"
+        android:padding="6dp"
+        android:clipToPadding="false"/>
+
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:id="@+id/bottomNavigation"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:background="@color/zepto_purple"
+        app:itemTextColor="@color/zepto_white"
+        app:elevation="4dp"
+        app:menu="@menu/bottom_nav_menu"/>
+
+</RelativeLayout>
