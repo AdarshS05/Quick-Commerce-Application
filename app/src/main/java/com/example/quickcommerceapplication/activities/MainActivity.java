@@ -56,7 +56,9 @@ public class MainActivity extends AppCompatActivity {
         dbHelper = new DatabaseHelper(this);
 
         View topHeader = findViewById(R.id.topHeader);
-        actvSearch = topHeader.findViewById(R.id.actvSearch);
+        if (topHeader != null) {
+            actvSearch = topHeader.findViewById(R.id.actvSearch);
+        }
         rvProducts = findViewById(R.id.rvProducts);
         bottomNavigation = findViewById(R.id.bottomNavigation);
 
@@ -67,20 +69,35 @@ public class MainActivity extends AppCompatActivity {
         NavigationUtils.setupBottomNavigation(this, bottomNavigation, R.id.nav_products);
         setupDynamicSearch();
         fetchCategoriesAndProducts();
+        handleIncomingSearchIntent(getIntent());
+    }
+
+    @Override
+    protected void onNewIntent(Intent intent) {
+        super.onNewIntent(intent);
+        setIntent(intent);
+        handleIncomingSearchIntent(intent);
+    }
+
+    private void handleIncomingSearchIntent(Intent intent) {
+        if (intent != null && intent.hasExtra("SEARCH_QUERY")) {
+            String query = intent.getStringExtra("SEARCH_QUERY");
+            if (query != null && actvSearch != null) {
+                actvSearch.setText(query, false);
+                filterProducts(query);
+            }
+        }
     }
 
     private void setupDynamicSearch() {
-        actvSearch.addTextChangedListener(new TextWatcher() {
-            @Override
-            public void beforeTextChanged(CharSequence charSequence, int start, int count, int after) {}
+        if (actvSearch == null) return;
 
-            @Override
-            public void onTextChanged(CharSequence s, int start, int before, int count) {
+        actvSearch.addTextChangedListener(new TextWatcher() {
+            @Override public void beforeTextChanged(CharSequence charSequence, int start, int count, int after) {}
+            @Override public void onTextChanged(CharSequence s, int start, int before, int count) {
                 filterProducts(s.toString().trim());
             }
-
-            @Override
-            public void afterTextChanged(Editable editable) {}
+            @Override public void afterTextChanged(Editable editable) {}
         });
 
         actvSearch.setOnItemClickListener((parent, view, position, id) -> {
@@ -103,8 +120,9 @@ public class MainActivity extends AppCompatActivity {
             }
         });
     }
+
     private void filterProducts(String query) {
-        if (query.isEmpty()) {
+        if (query == null || query.isEmpty()) {
             productAdapter.updateData(allProducts);
             return;
         }
@@ -117,12 +135,11 @@ public class MainActivity extends AppCompatActivity {
             boolean matchesDescription = product.getDescription() != null && product.getDescription().toLowerCase().contains(lowerQuery);
             boolean matchesCategory = false;
 
-            for(Map.Entry<String,Integer> entry : categoryMap.entrySet()) {
+            for (Map.Entry<String, Integer> entry : categoryMap.entrySet()) {
                 if (entry.getValue() == product.getCategoryId() && entry.getKey().contains(lowerQuery)) {
                     matchesCategory = true;
                     break;
                 }
-
             }
 
             if (matchesName || matchesDescription || matchesCategory) {
@@ -149,7 +166,7 @@ public class MainActivity extends AppCompatActivity {
                     }
                     fetchProducts();
                 },
-                error -> fetchProducts() // Fallback to fetching products directly
+                error -> fetchProducts()
         );
 
         Volley.newRequestQueue(this).add(catRequest);
@@ -183,13 +200,14 @@ public class MainActivity extends AppCompatActivity {
                             allProducts = dbHelper.getAllProducts();
                             productAdapter.updateData(allProducts);
 
-                            // Populate Autocomplete search suggestions
-                            ArrayAdapter<String> autoAdapter = new ArrayAdapter<>(
-                                    this,
-                                    android.R.layout.simple_dropdown_item_1line,
-                                    new ArrayList<>(suggestionsSet)
-                            );
-                            actvSearch.setAdapter(autoAdapter);
+                            if (actvSearch != null) {
+                                ArrayAdapter<String> autoAdapter = new ArrayAdapter<>(
+                                        this,
+                                        android.R.layout.simple_dropdown_item_1line,
+                                        new ArrayList<>(suggestionsSet)
+                                );
+                                actvSearch.setAdapter(autoAdapter);
+                            }
                         }
                     } catch (JSONException e) {
                         e.printStackTrace();
