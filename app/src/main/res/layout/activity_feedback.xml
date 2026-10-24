@@ -27,7 +27,7 @@
         android:layout_below="@id/topHeader" android:layout_above="@id/bottomNavigation"
         android:orientation="vertical" android:padding="24dp">
         <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
-            android:text="How was your order?" android:textSize="20sp"/>
+            android:text="How was your order?" android:textSize="20sp" android:textColor="@color/black"/>
         <RatingBar android:id="@+id/ratingBar" android:layout_width="wrap_content"
             android:layout_height="wrap_content" android:numStars="5" android:stepSize="1"
             android:rating="0"/>
@@ -35,6 +35,7 @@
             android:layout_height="wrap_content" android:hint="Optional comments"
             android:inputType="textMultiLine" android:minLines="4"/>
         <Button android:id="@+id/btnSubmitFeedback" android:layout_width="match_parent"
-            android:layout_height="wrap_content" android:text="Submit feedback"/>
+            android:layout_height="wrap_content" android:text="Submit feedback"
+            android:textColor="@color/zepto_white" android:backgroundTint="@color/zepto_bleached_cedar"/>
     </LinearLayout>
 </RelativeLayout>

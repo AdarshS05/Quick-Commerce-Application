@@ -57,14 +57,6 @@
             android:padding="24dp"
             android:elevation="4dp">
 
-            <ImageView
-                android:id="@+id/ivProfilePic"
-                android:layout_width="80dp"
-                android:layout_height="80dp"
-                android:src="@drawable/ic_launcher_foreground"
-                android:background="@drawable/search_bar_background"
-                android:contentDescription="Profile Picture" />
-
             <TextView
                 android:id="@+id/tvProfileName"
                 android:layout_width="wrap_content"

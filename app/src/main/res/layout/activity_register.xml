@@ -19,6 +19,7 @@
             android:layout_height="wrap_content"
             android:text="Create Account"
             android:textSize="24sp"
+            android:textColor="@color/black"
             android:textStyle="bold"
             android:layout_marginBottom="24dp"
             android:textAlignment="center"/>
@@ -63,7 +64,9 @@
             android:id="@+id/btnRegister"
             android:layout_width="match_parent"
             android:layout_height="56dp"
-            android:text="REGISTER"/>
+            android:textColor="@color/zepto_white"
+            android:text="REGISTER"
+            android:backgroundTint="@color/zepto_bleached_cedar"/>
     </LinearLayout>
 
 </ScrollView>

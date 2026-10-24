@@ -24,7 +24,10 @@ android {
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
 
-        manifestPlaceholders["mapsApiKey"] = localProperties.getProperty("MAPS_API_KEY") ?: ""
+        manifestPlaceholders["mapsApiKey"] =
+                requireNotNull(localProperties.getProperty("MAPS_API_KEY")) {
+                    "MAPS_API_KEY missing from local.properties"
+                }
     }
 
     buildTypes {
